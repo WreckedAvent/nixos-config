@@ -91,11 +91,28 @@
     description = "riley k";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      # editor: SYSTEM HAS NO NANO OR VIM
       helix
+      
+      # kde
       kdePackages.kate
+      kdePackages.plasma-systemmonitor
+      kdePackages.calligra
       kdePackages.kcalc
+      kdePackages.yakuake
+
+      # social
       discord
+
+      # utils
       usbimager
+      easyeffects
+
+      # language
+      aspell
+      aspellDicts.en
+      hunspell
+      hunspellDicts.en_US
     ];
   };
 
