@@ -28,6 +28,10 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          #
+          # enable with weird hm errors, grep for this extension to see what the problem is
+          # home-manager.backupFileExtension = "hm-backup";
+          # 
           home-manager.users.rileycat.imports = [
             ./rileycat.nix
             catppuccin.homeModules.catppuccin

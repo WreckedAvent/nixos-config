@@ -3,7 +3,7 @@
 {
   home.username = "rileycat";
   home.homeDirectory = "/home/rileycat";
-
+  
   home.packages = with pkgs; [
     ripgrep
     jq
