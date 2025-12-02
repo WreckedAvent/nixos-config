@@ -8,10 +8,11 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    catppuccin.url = "github:catppuccin/nix/release-25.05";
+    catppuccin.url = "github:catppuccin/nix/release-25.05"; 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, unstable, home-manager, catppuccin }@inputs:
+  outputs = { self, nixpkgs, unstable, home-manager, catppuccin, nixos-hardware }@inputs:
   let
     system = "x86_64-linux";
     pkgs-unstable = unstable.legacyPackages.${system};
@@ -23,6 +24,7 @@
         ./configuration.nix
 
         catppuccin.nixosModules.catppuccin
+        nixos-hardware.nixosModules.framework-amd-ai-300-series
 
         home-manager.nixosModules.home-manager
         {
