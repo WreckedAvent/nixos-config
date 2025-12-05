@@ -20,13 +20,15 @@
 
   programs.git = {
     enable = true;
-    userName = "rileycat";
-    userEmail = "deliciousfaith@live.net";
-
-    difftastic = {
-      enable = true;
-      display = "side-by-side";
+    settings.user = {
+      name = "rileycat";
+      email = "deliciousfaith@live.net";
     };
+  };
+  
+  programs.difftastic = {
+    git.enable = true;
+    options.display = "side-by-side";
   };
 
   programs.starship = {
