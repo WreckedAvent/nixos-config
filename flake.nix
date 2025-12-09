@@ -20,9 +20,34 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, ... }: {
     systems = [ "x86_64-linux" "aarch64-linux" ];
 
+    perSystem = { system, ... }: {
+      # override nixpkgs with a configured one
+      _module.args.pkgs = import inputs.nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    };
+
+    flake = {
+      # add in packages from inputs
+      homeModules.unstable-packages = { pkgs, ... }: {
+        home.packages = [
+          inputs.unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.zed-editor
+        ];
+      };
+
+      # make sure our configurations use our nixpkgs
+      nixosModules.flake-nixpkgs = { config, ... }: {
+        nixpkgs.pkgs = withSystem config.nixpkgs.hostPlatform.system (
+          { pkgs, ... }: # perSystem module arguments
+          pkgs
+        );
+      };
+    };
+    
     imports = [
       # allow merging of hm configurations per flake part
       inputs.home-manager.flakeModules.home-manager
@@ -34,5 +59,5 @@
       ./hosts/silverwolf
       ./hosts/blackjack
     ];
-  };
+  });
 }

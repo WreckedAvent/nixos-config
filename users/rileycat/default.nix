@@ -1,3 +1,4 @@
 {
-  flake.modules.homeManager.users-rileycat = import ./home.nix;
+  flake.homeModules.users-rileycat = import ./home.nix;
 }
+
