@@ -1,6 +1,6 @@
-{ pkgs, ... }:
-{
-   fonts.packages = with pkgs; with nerd-fonts; [
+{pkgs, ...}: {
+  fonts.packages = with pkgs;
+  with nerd-fonts; [
     fira-code
     caskaydia-cove
     inconsolata

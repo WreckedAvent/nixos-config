@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ../audio.nix
     ../fonts.nix
@@ -9,17 +11,17 @@
     ../kde.nix
     ../utils.nix
   ];
-  
+
   nix.package = pkgs.lixPackageSets.stable.lix;
   nix.settings.experimental-features = "nix-command flakes";
 
   boot.loader.efi.canTouchEfiVariables = true;
   # grub is momentarily easier to use with multi booting due to prober
   boot.loader.grub = {
-    enable      = true;
-    efiSupport  = true;
+    enable = true;
+    efiSupport = true;
     useOSProber = true;
-    devices     = [ "nodev" ];
+    devices = ["nodev"];
   };
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -29,7 +31,7 @@
   users.users.rileycat = {
     isNormalUser = true;
     description = "riley k";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   networking.hostName = "blackjack"; # Define your hostname.

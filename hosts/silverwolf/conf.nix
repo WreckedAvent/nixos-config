@@ -1,13 +1,15 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ../audio.nix
     ../i18n.nix
     ../kde.nix
     ../utils.nix
   ];
-  
+
   nix.package = pkgs.lixPackageSets.stable.lix;
   nix.settings.experimental-features = "nix-command flakes";
   nixpkgs.config.allowUnfree = true;
@@ -21,7 +23,7 @@
   users.users.rileycat = {
     isNormalUser = true;
     description = "riley k";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   networking.hostName = "silverwolf"; # Define your hostname.

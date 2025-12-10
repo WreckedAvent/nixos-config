@@ -1,9 +1,11 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.username = "rileycat";
   home.homeDirectory = "/home/rileycat";
-  
+
   home.packages = with pkgs; [
     # general utils
     bat
@@ -34,7 +36,7 @@
       email = "deliciousfaith@live.net";
     };
   };
-  
+
   programs.difftastic = {
     git.enable = true;
     options.display = "side-by-side";
@@ -52,7 +54,7 @@
   programs.firefox = {
     enable = true;
   };
-  
+
   catppuccin.firefox = {
     enable = true;
     force = true;
@@ -69,7 +71,7 @@
       selection.save_to_clipboard = true;
     };
   };
-  
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;

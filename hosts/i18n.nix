@@ -1,10 +1,7 @@
-{ lib, ... }:
-
-let
+{lib, ...}: let
   locale = "en_US.UTF-8";
   default = lib.mkDefault;
-in
-{
+in {
   time.timeZone = lib.mkDefault "America/Los_Angeles";
   i18n.defaultLocale = lib.mkDefault locale;
 

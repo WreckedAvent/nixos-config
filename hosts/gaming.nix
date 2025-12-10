@@ -6,5 +6,5 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
-  # todo: configure nvidia 
+  # todo: configure nvidia
 }
