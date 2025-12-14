@@ -5,6 +5,7 @@
 }: {
   imports = [
     ../audio.nix
+    ../fonts.nix
     ../i18n.nix
     ../kde.nix
     ../utils.nix
@@ -12,7 +13,6 @@
 
   nix.package = pkgs.lixPackageSets.stable.lix;
   nix.settings.experimental-features = "nix-command flakes";
-  nixpkgs.config.allowUnfree = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -24,6 +24,11 @@
     isNormalUser = true;
     description = "riley k";
     extraGroups = ["networkmanager" "wheel"];
+    shell = pkgs.zsh;
+  };
+
+  programs = {
+    zsh.enable = true;
   };
 
   networking.hostName = "silverwolf"; # Define your hostname.

@@ -10,20 +10,27 @@
         ./hardware.nix
 
         catppuccin.nixosModules.catppuccin
+
+        self.nixosModules.flake-nixpkgs
+
         nixos-hardware.nixosModules.framework-amd-ai-300-series
 
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          #
-          # enable with weird hm errors, grep for this extension to see what the problem is
-          # home-manager.backupFileExtension = "hm-backup";
-          #
-          home-manager.users.rileycat.imports = with self.modules.homeManager; [
-            users-rileycat
-            catppuccin.homeModules.catppuccin
-          ];
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = {inherit inputs;};
+            # backupFileExtension = "hm-backup" # enable for conflict resolution
+
+            users.rileycat.imports = [
+              self.homeModules.users-rileycat
+
+              catppuccin.homeModules.catppuccin
+
+              self.homeModules.unstable-packages
+            ];
+          };
         }
       ];
     };
