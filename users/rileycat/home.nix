@@ -25,6 +25,8 @@
     aspellDicts.en
     hunspell
     hunspellDicts.en_US
+
+    libreoffice-qt-fresh
   ];
 
   programs.vesktop.enable = true;

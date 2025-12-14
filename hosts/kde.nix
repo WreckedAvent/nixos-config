@@ -25,7 +25,6 @@ in {
       # 1st party
       kate
       plasma-systemmonitor
-      calligra
       kcalc
 
       # 3rd party
