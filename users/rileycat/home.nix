@@ -16,6 +16,10 @@
     nnn
     ripgrep
 
+    # nix
+    nps
+    nix-index
+
     # gui utils
     usbimager
     easyeffects
@@ -29,6 +33,13 @@
     # productivity
     libreoffice-qt-fresh
     nil
+    rust-analyzer
+    zls
+    ty
+    marksman
+    typescript-language-server
+    gopls
+    omnisharp-roslyn
   ];
 
   programs.vesktop.enable = true;
