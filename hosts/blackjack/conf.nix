@@ -48,7 +48,7 @@
   networking.hostName = "blackjack"; # Define your hostname.
   networking.networkmanager.enable = true;
   services.openssh.enable = true;
-  services.confd.enable = true;
+  services.resolved.enable = true;
 
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

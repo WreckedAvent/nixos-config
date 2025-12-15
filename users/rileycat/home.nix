@@ -26,7 +26,9 @@
     hunspell
     hunspellDicts.en_US
 
+    # productivity
     libreoffice-qt-fresh
+    nil
   ];
 
   programs.vesktop.enable = true;
@@ -92,7 +94,26 @@
     enable = true;
     defaultEditor = true;
     settings = {
-      editor.line-number = "relative";
+      editor = {
+        line-number = "relative";
+        end-of-line-diagnostics = "hint";
+        rulers = [80 120];
+
+        indent-guides = {
+          character = "⸽";
+          render = true;
+        };
+
+        inline-diagnostics = {
+          cursor-line = "error"; # Show inline diagnostics when the cursor is on the line
+          other-lines = "disable"; # Don't expand diagnostics unless the cursor is on the line
+        };
+
+        lsp = {
+          display-messages = true;
+          display-inlay-hints = true;
+        };
+      };
     };
   };
 
