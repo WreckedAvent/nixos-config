@@ -10,6 +10,7 @@ in {
     steam = mkEnableOption "steam game library manager";
     nvidia = mkEnableOption "nvidia graphics driver support";
     amd = mkEnableOption "amd graphics driver support";
+    gamescope = mkEnableOption "gamescope simple compositor";
   };
 
   config = {
@@ -18,6 +19,12 @@ in {
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
+      gamescopeSession.enable = cfg.gamescope;
+    };
+
+    programs.gamescope = mkIf cfg.gamescope {
+      enable = true;
+      capSysNice = true;
     };
 
     # Open GL
