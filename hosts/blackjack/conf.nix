@@ -43,6 +43,7 @@
     steam = true;
     nvidia = true;
     gamescope = true;
+    recorder = true;
   };
 
   rcat.coding = {

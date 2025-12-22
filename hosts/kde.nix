@@ -26,6 +26,7 @@ in {
       kate
       plasma-systemmonitor
       kcalc
+      kdenlive
 
       # 3rd party
       qtstyleplugin-kvantum

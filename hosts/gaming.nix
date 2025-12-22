@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   cfg = config.rcat.gayming;
@@ -11,6 +12,7 @@ in {
     nvidia = mkEnableOption "nvidia graphics driver support";
     amd = mkEnableOption "amd graphics driver support";
     gamescope = mkEnableOption "gamescope simple compositor";
+    recorder = mkEnableOption "screen recording via gpu screen rec";
   };
 
   config = {
@@ -26,6 +28,12 @@ in {
       enable = true;
       capSysNice = true;
     };
+
+    programs.gpu-screen-recorder.enable = cfg.recorder;
+
+    environment.systemPackages = mkIf cfg.recorder [
+      pkgs.gpu-screen-recorder-gtk
+    ];
 
     # Open GL
     hardware.graphics.enable = cfg.nvidia or cfg.amd;
