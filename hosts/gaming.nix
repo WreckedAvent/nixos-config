@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.rcat.gayming;
+  cfg = config.rcat.gaming;
   inherit (lib) mkIf mkEnableOption;
 in {
-  options.rcat.gayming = {
+  options.rcat.gaming = {
     steam = mkEnableOption "steam game library manager";
     nvidia = mkEnableOption "nvidia graphics driver support";
     amd = mkEnableOption "amd graphics driver support";

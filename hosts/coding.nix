@@ -18,13 +18,13 @@ in {
   config = {
     rcat.fonts.nerd = mkDefault true;
     environment.systemPackages = mkIf cfg.lsp (with pkgs; [
-      rust-analyzer
-      zls
-      ty
-      marksman
-      typescript-language-server
       gopls
+      marksman
       omnisharp-roslyn
+      rust-analyzer
+      ty
+      typescript-language-server
+      zls
     ]);
   };
 }
