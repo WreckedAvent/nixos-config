@@ -1,10 +1,7 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ../audio.nix
+    ../boot.nix
     ../coding.nix
     ../gaming.nix
     ../i18n.nix
@@ -14,17 +11,6 @@
 
   nix.package = pkgs.lixPackageSets.stable.lix;
   nix.settings.experimental-features = "nix-command flakes";
-
-  boot.loader.efi.canTouchEfiVariables = true;
-  # grub is momentarily easier to use with multi booting due to prober
-  boot.loader.grub = {
-    enable = true;
-    efiSupport = true;
-    useOSProber = true;
-    devices = ["nodev"];
-  };
-
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   services.printing.enable = true;
 
@@ -37,6 +23,13 @@
 
   programs = {
     zsh.enable = true;
+  };
+
+  catppuccin.enable = true;
+
+  rcat.boot = {
+    systemd-boot = true;
+    useLatestKernel = false;
   };
 
   rcat.gayming = {
