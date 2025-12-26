@@ -13,7 +13,7 @@ with inputs; {
   ];
 
   flake.homeConfigurations."rileycat" = home-manager.lib.homeManagerConfiguration {
-    packages = nixpkgs.legacyPackages.x86_64-linux;
+    pkgs = nixpkgs.legacyPackages.x86_64-linux;
     modules = self.homeImports."rileycat";
   };
 }

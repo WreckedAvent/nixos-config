@@ -70,6 +70,8 @@
 
   systemd.user.startServices = "sd-switch";
 
+  programs.home-manager.enable = true;
+
   # minimum compatible home version
   home.stateVersion = "25.05";
 }
