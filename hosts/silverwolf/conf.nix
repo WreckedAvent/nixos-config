@@ -5,18 +5,16 @@
 }: {
   imports = [
     ../audio.nix
-    ../fonts.nix
+    ../boot.nix
+    ../coding.nix
     ../i18n.nix
     ../kde.nix
+    ../networking.nix
     ../utils.nix
   ];
 
   nix.package = pkgs.lixPackageSets.stable.lix;
   nix.settings.experimental-features = "nix-command flakes";
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   services.printing.enable = true;
 
@@ -31,21 +29,20 @@
     zsh.enable = true;
   };
 
-  networking.hostName = "silverwolf"; # Define your hostname.
-  networking.networkmanager.enable = true;
-  services.openssh.enable = true;
+  rcat = {
+    boot = {
+      systemd-boot = true;
+      useLatestKernel = true;
+    };
 
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    coding = {
+      lsp = true;
+    };
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+    networking = {
+      hostName = "silverwolf";
+    };
+  };
+
   system.stateVersion = "25.05"; # Did you read the comment?
 }
