@@ -31,7 +31,7 @@
     ripgrep
 
     # gui utils
-    usbimager
+    # usbimager
     easyeffects
   ];
 

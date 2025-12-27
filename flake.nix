@@ -31,6 +31,10 @@
     # tweaks for specific known hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    # for WSL hosts
+    # CHORE: update to 25.11 when it is ready
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
     # pre-compiled nix pkgs database for e.g finding what package adds what binary
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -83,6 +87,7 @@
 
         ./hosts/silverwolf
         ./hosts/blackjack
+        ./hosts/rileyrose
       ];
     });
 }
