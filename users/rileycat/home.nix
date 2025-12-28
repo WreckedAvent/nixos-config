@@ -23,11 +23,20 @@
     bat
     btop
     eza
-    fzf
     jq
     nnn
     ripgrep
   ];
+
+  programs.fzf = {
+    enable = true;
+    defaultOptions = [
+      "--height 50%"
+      "--border"
+      "--layout reverse"
+      "--preview 'bat --style=numbers --color=always {}'"
+    ];
+  };
 
   programs.vesktop.enable = true;
 
