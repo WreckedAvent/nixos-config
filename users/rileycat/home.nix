@@ -16,12 +16,10 @@
 
     terminal = {
       zsh = true;
-      alacritty = true;
     };
   };
 
   home.packages = with pkgs; [
-    # general utils
     bat
     btop
     eza
@@ -29,10 +27,6 @@
     jq
     nnn
     ripgrep
-
-    # gui utils
-    # usbimager
-    easyeffects
   ];
 
   programs.vesktop.enable = true;

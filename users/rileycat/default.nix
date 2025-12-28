@@ -12,8 +12,14 @@ with inputs; {
     nix-index-database.homeModules.default
   ];
 
+  flake.homeImports."rileycat@linux-any" =
+    self.homeImports."rileycat"
+    ++ [
+      ./linux-any.nix
+    ];
+
   flake.homeConfigurations."rileycat" = home-manager.lib.homeManagerConfiguration {
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    modules = self.homeImports."rileycat";
+    modules = self.homeImports."rileycat@linux-any";
   };
 }
