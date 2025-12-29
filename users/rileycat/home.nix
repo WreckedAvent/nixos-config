@@ -31,10 +31,10 @@
   programs.fzf = {
     enable = true;
     defaultOptions = [
-      "--height 50%"
+      "--height=50%"
       "--border"
-      "--layout reverse"
-      "--preview 'bat --style=numbers --color=always {}'"
+      "--layout=reverse"
+      "--preview='bat --style=numbers --color=always {}'"
     ];
   };
 

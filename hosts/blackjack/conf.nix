@@ -7,6 +7,7 @@
     ../i18n.nix
     ../kde.nix
     ../networking.nix
+    ../productivity.nix
     ../utils.nix
   ];
 
@@ -48,6 +49,8 @@
     networking = {
       hostName = "blackjack";
     };
+
+    productivity.dictd = true;
   };
 
   # the version this file was generated with
