@@ -43,37 +43,19 @@
   };
 
   outputs = inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} ({withSystem, ...}: {
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux" "aarch64-linux"];
 
-      perSystem = {
-        system,
-        inputs',
-        ...
-      }: {
-        # override nixpkgs with a configured one
-        # TODO: add a simple overlay to demonstrate usage
-        _module.args.pkgs = import inputs.nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
-
-        formatter = inputs.alejandra.defaultPackage.${system};
-      };
-
-      flake = {
-        # a simple nixos module for using our pre-configured nixpkgs
-        nixosModules.flake-nixpkgs = {config, ...}: {
-          nixpkgs.pkgs = withSystem config.nixpkgs.hostPlatform.system (
-            {pkgs, ...}:
-              pkgs
-          );
-        };
+      perSystem = {pkgs, ...}: {
+        formatter = pkgs.alejandra;
       };
 
       imports = [
         # allow merging of hm configurations per flake part
-        inputs.home-manager.flakeModules.home-manager
+        # inputs.home-manager.flakeModules.home-manager
+
+        # configure flake-wide nixpkgs
+        ./nixpkgs.flake-part.nix
 
         ./users/rileycat
 
@@ -81,5 +63,5 @@
         ./hosts/blackjack
         ./hosts/rileyrose
       ];
-    });
+    };
 }

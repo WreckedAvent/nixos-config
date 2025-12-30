@@ -1,4 +1,5 @@
 {
+  withSystem,
   inputs,
   self,
   ...
@@ -23,7 +24,7 @@ with inputs; {
     ];
 
   flake.homeConfigurations."rileycat" = home-manager.lib.homeManagerConfiguration {
-    pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    pkgs = withSystem "x86_64-linux" ({pkgs, ...}: pkgs);
     modules = self.homeImports."rileycat@linux-any";
   };
 }

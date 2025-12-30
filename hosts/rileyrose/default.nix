@@ -10,6 +10,8 @@
         ./conf.nix
         ./hardware.nix
 
+        self.nixosModules.flake-nixpkgs
+
         nixos-wsl.nixosModules.default
 
         home-manager.nixosModules.home-manager
