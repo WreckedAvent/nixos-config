@@ -1,20 +1,19 @@
 # rileycat nixos configuration
 
-A (relatively) simple flake-(parts)-based nixos configuration for all of the hosts I've moved to nix in my home lab.
+All of the systems I've moved to nix live here.
 
-# for beginners
+## *for beginners*
 
-Welcome! This configuration is meant to be approachable while not being limited due to accessibility.
+#### Welcome! 
 
 * You can read each system's `conf.nix` and `hardware.nix` and compare it to your own.
 * If you have home manager installed, you can additionally look at `home.nix` files and do the same.
 * If your configuration is flake-based *and* you are feeling ambitious, you can look at the respective `default.nix` files.
 * You can ignore the rest of this readme.
 
-# layout
+## *layout*
 
-The general idea is simple: each piece is more re-usable as you go down.
-The edges should not need to deal with flake-specific problems, such as specifying what system they get their packages from.
+#### Downwards is less opinionated.
 
 * `flake.nix` - the *flake's* entry point.
   * The entire configuration with all imports and everything included. Not designed to be re-used.
