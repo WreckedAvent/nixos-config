@@ -13,8 +13,7 @@
     };
 
     # a pervasive and system-wide theme
-    # CHORE: update to 25.11 when it is ready
-    catppuccin.url = "github:catppuccin/nix/release-25.05";
+    catppuccin.url = "github:catppuccin/nix/release-25.11";
 
     # opinionated flake layout to increase reusability
     flake-parts = {
@@ -32,8 +31,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # for WSL hosts
-    # CHORE: update to 25.11 when it is ready
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/release-25.11";
 
     # pre-compiled nix pkgs database for e.g finding what package adds what binary
     nix-index-database = {
