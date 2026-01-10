@@ -19,7 +19,7 @@
   };
 
   # use configured nixpkgs
-  flake.nixosModules.flake-nixpkgs = {config, ...}: {
+  flake.nixosModules.nixpkgs = {config, ...}: {
     nixpkgs.pkgs = withSystem config.nixpkgs.hostPlatform.system (
       {pkgs, ...}:
         pkgs

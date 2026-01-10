@@ -2,26 +2,17 @@
   withSystem,
   inputs,
   self,
+  config,
   ...
 }:
 with inputs; {
-  imports = [
-    ../unstable.flake-part.nix
-  ];
-
-  flake.homeImports."rileycat" = [
-    ./home.nix
-    self.homeModules.unstable-packages
-
-    catppuccin.homeModules.catppuccin
-    nix-index-database.homeModules.default
-  ];
+  flake.homeImports."rileycat" =
+    [./home.nix]
+    ++ config.rcat.flake.homeDefaults;
 
   flake.homeImports."rileycat@linux-any" =
     self.homeImports."rileycat"
-    ++ [
-      ./linux-any.nix
-    ];
+    ++ [./linux-any.nix];
 
   flake.homeConfigurations."rileycat" = home-manager.lib.homeManagerConfiguration {
     pkgs = withSystem "x86_64-linux" ({pkgs, ...}: pkgs);

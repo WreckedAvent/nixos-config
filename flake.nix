@@ -41,21 +41,40 @@
   };
 
   outputs = inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux" "aarch64-linux"];
+    with inputs;
+      flake-parts.lib.mkFlake {inherit inputs;} {
+        systems = ["x86_64-linux" "aarch64-linux"];
 
-      perSystem = {pkgs, ...}: {
-        formatter = pkgs.alejandra;
+        perSystem = {pkgs, ...}: {
+          formatter = pkgs.alejandra;
+        };
+
+        rcat.flake = {
+          nixosDefaults = [
+            self.nixosModules.nixpkgs
+            self.nixosModules."rileycat"
+
+            catppuccin.nixosModules.default
+          ];
+
+          homeDefaults = [
+            self.homeModules.unstable
+
+            catppuccin.homeModules.default
+            nix-index-database.homeModules.default
+          ];
+        };
+
+        imports = [
+          ./rcat.nix
+          ./nixpkgs.nix
+          ./unstable.nix
+
+          ./users/rileycat
+
+          ./hosts/silverwolf
+          ./hosts/blackjack
+          ./hosts/rileyrose
+        ];
       };
-
-      imports = [
-        ./nixpkgs.flake-part.nix
-
-        ./users/rileycat
-
-        ./hosts/silverwolf
-        ./hosts/blackjack
-        ./hosts/rileyrose
-      ];
-    };
 }

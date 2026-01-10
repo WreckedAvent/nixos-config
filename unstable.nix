@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.homeModules.unstable-packages = {
+  flake.homeModules.unstable = {
     pkgs,
     lib,
     config,
